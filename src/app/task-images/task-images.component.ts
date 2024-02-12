@@ -17,7 +17,6 @@ export class TaskImagesComponent implements OnInit{
   constructor(private imageService: ImageService) { }
 
   ngOnInit(): void {
-    const taskedImage = localStorage.getItem("IMAGE");
-    this.image = JSON.parse(taskedImage);
+    this.image = JSON.parse(window.localStorage.getItem("IMAGE")!);
   }
 }

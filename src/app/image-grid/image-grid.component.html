@@ -8,7 +8,7 @@
           <div class="card-body">
             <h5 class="card-title">Image {{ image.id }}</h5>
             <button class="btn btn-primary mx-2" (click)="viewImage(image)">View Full Size</button>
-            <button class="btn btn-danger" (click)="assignToTask(image.id)">Assign to Task</button>
+            <button class="btn btn-danger" (click)="assignImage(image)">Assign to Task</button>
           </div>
         </div>
       </div>
@@ -46,6 +46,24 @@
         <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="exitView()">
           Close
         </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal to show the image in full screen -->
+
+<div class="modal fade show" tabindex="-1" [style.display]="displayAssign? 'block':'none'">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <h5>Would you like to assign image {{currentImage.id}} to task?</h5>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="exitTask()">
+          Close
+        </button>
+        <button type="button" class="btn btn-primary" (click)="assignToTask(currentImage.id)">Assign</button>
       </div>
     </div>
   </div>

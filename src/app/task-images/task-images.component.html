@@ -2,26 +2,26 @@
 <div class="container mt-5">
   <div class="row justify-content-center">
     <div class="col-lg">
-      <div>
-        <h2>Task List:</h2>
-        <!-- <div class="image-container" *ngFor="let taskImage of taskImages">
-                  <img [src]="taskImage.url" alt="{{ taskImage.id }}" class="image">
-                </div> -->
-        <table class="table table-borderless">
-          <tbody>
-            <tr>
-              <td>
-                Image ID: {{image.id}}
-              </td>
-              <td>
-                Tasked: {{image.isTasked}}
-              </td>
-              <td>
-                Image: <img [src]="image.url" [alt]="image.id">
-              </td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title">Task:</h2>
+          <table class="table table-borderless">
+            <tbody>
+              <tr>
+                <th>Image ID:</th>
+                <td>{{image.id}}</td>
+              </tr>
+              <tr>
+                <th>Tasked:</th>
+                <td>{{image.isTasked}}</td>
+              </tr>
+              <tr>
+                <th>Image:</th>
+                <td><img [src]="image.url" [alt]="image.id" class="img-fluid"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </div>

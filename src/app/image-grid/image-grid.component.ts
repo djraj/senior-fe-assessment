@@ -19,17 +19,13 @@ export class ImageGridComponent implements OnInit {
   pageSize: number = 12;
   totalItems: number = 0;
   displayImage: boolean = false;
+  displayAssign: boolean = false;
 
   constructor(private imageService: ImageService, private router: Router) {}
 
   ngOnInit(): void {
     this.getImages();
   }
-
-  // getImages(): void {
-  //   this.imageService.getImages(this.page, this.pageSize).subscribe(images => this.images = images);
-  //   this.imageService.getTotalImages().subscribe(totalImages => this.totalImages = totalImages);
-  // }
 
   getImages(): void {
     this.imageService
@@ -63,18 +59,27 @@ export class ImageGridComponent implements OnInit {
     const image = this.images.find((image) => image.id === imageID);
     if (image) {
       image.isTasked = true;
-      localStorage.removeItem("IMAGE");
-      localStorage.setItem("IMAGE", JSON.stringify(image));
+      window.localStorage.removeItem("IMAGE");
+      window.localStorage.setItem("IMAGE", JSON.stringify(image));
+      this.displayAssign = false;
     }
   }
 
   viewImage(image: Image) {
     this.currentImage = image;
     this.displayImage = true;
-    // window.open(image.url, "_blank");
   }
 
   exitView() {
     this.displayImage = false;
+  }
+
+  assignImage(image: Image) {
+    this.currentImage = image;
+    this.displayAssign = true;
+  }
+
+  exitTask() {
+    this.displayAssign = false;
   }
 }
