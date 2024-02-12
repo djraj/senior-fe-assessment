@@ -1,0 +1,52 @@
+<div class="container mt-5">
+  <div class="container">
+    <div class="row">
+      <h2>List of Images:</h2>
+      <div class="col-md-4 mb-3" *ngFor="let image of images">
+        <div class="card mb-3">
+          <img class="card-img-top" [src]="image.url" alt="Image" (click)="viewImage(image)">
+          <div class="card-body">
+            <h5 class="card-title">Image {{ image.id }}</h5>
+            <button class="btn btn-primary mx-2" (click)="viewImage(image)">View Full Size</button>
+            <button class="btn btn-danger" (click)="assignToTask(image.id)">Assign to Task</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <nav aria-label="Page navigation example">
+    <ul class="pagination">
+      <li class="page-item" [class.disabled]="currentPage === 1">
+        <a class="page-link"aria-label="Previous" (click)="prevPage()">
+          <span aria-hidden="true">&laquo;</span>
+        </a>
+      </li>
+      <li class="page-item" *ngFor="let pageItem of [].constructor(totalItems)" [class.active]="currentPage === pageItem">
+        <a class="page-link" (click)="setPage(pageItem)">{{ pageItem }}</a>
+      </li>
+      <li class="page-item" [class.disabled]="currentPage === totalItems">
+        <a class="page-link" aria-label="Next" (click)="nextPage()">
+          <span aria-hidden="true">&raquo;</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</div>
+
+<!-- Modal to show the image in full screen -->
+
+<div class="modal fade show" tabindex="-1" [style.display]="displayImage? 'block':'none'">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <img [src]="currentImage.url" class="img-fluid" alt="{{ currentImage.id }}" />
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="exitView()">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

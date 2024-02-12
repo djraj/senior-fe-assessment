@@ -1,0 +1,17 @@
+.navbar {
+  background-image: linear-gradient(to right, #0066ff, #00ff99);
+  padding: 10px;
+}
+
+.navbar-brand {
+  color: white;
+  font-weight: bold;
+}
+
+.nav-link {
+  color: white;
+}
+
+.nav-link:hover {
+  color: #00ff99;
+}
